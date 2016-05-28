@@ -274,7 +274,7 @@ class OMXPlayer(object):
         Returns:
             long: The duration in microseconds
         """
-        return long(self._get_properties_interface().Duration())
+        return int(self._get_properties_interface().Duration())
 
     @_check_player_is_active
     def duration(self):
@@ -345,7 +345,7 @@ class OMXPlayer(object):
             [str]: A list of all known video streams, each item is in the
             format: ``<index>:<language>:<name>:<codec>:<active>``
         """
-        return map(str, self._get_player_interface().ListVideo())
+        return list(map(str, self._get_player_interface().ListVideo()))
 
     @_check_player_is_active
     def list_audio(self):
@@ -354,7 +354,7 @@ class OMXPlayer(object):
             [str]: A list of all known audio streams, each item is in the
             format: ``<index>:<language>:<name>:<codec>:<active>``
         """
-        return map(str, self._get_player_interface().ListAudio())
+        return list(map(str, self._get_player_interface().ListAudio()))
 
     @_check_player_is_active
     def list_subtitles(self):
@@ -363,7 +363,7 @@ class OMXPlayer(object):
             [str]: A list of all known subtitles, each item is in the
             format: ``<index>:<language>:<name>:<codec>:<active>``
         """
-        return map(str, self._get_player_interface().ListSubtitles())
+        return list(map(str, self._get_player_interface().ListSubtitles()))
 
     @_check_player_is_active
     def action(self, code):
